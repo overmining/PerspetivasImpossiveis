@@ -15,6 +15,7 @@ public class TpsScript : MonoBehaviour
     public float jumpHeight = 3f;
     float turnVelocity;
     bool isGrounded;
+    public bool dead = false;
 
     public LayerMask groundMask;
     Vector3 velocity;
@@ -54,5 +55,13 @@ public class TpsScript : MonoBehaviour
         }
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Jump" && isGrounded)
+        {
+            velocity.y = Mathf.Sqrt(jumpHeight * -6f * gravity);
+        }
     }
 }

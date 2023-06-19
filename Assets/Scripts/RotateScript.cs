@@ -5,7 +5,7 @@ using UnityEngine;
 public class RotateScript : MonoBehaviour
 {
     public Transform uiIndicator;
-    public Transform player;
+    public GameObject player;
 
     public float rotateSpeed = 100f;
     public string rotationPosition = "Down";
@@ -75,10 +75,20 @@ public class RotateScript : MonoBehaviour
         }
 
         // Respawn
-        if (player.position.y < -50f)
+        if (player.transform.position.y < -50f)
         {
-            rotationPosition = "Down";
-            player.position = new Vector3(0f, 0f, 0f);
+            Respawn();
         }
+        if (player.GetComponent<TpsScript>().dead)
+        {
+            Respawn();
+            player.GetComponent<TpsScript>().dead = false;
+        }
+    }
+
+    void Respawn()
+    {
+        rotationPosition = "Down";
+        player.transform.position = new Vector3(0f, 0f, 0f);
     }
 }

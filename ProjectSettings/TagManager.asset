@@ -5,11 +5,14 @@ TagManager:
   serializedVersion: 2
   tags:
   - Memories
+  - Enemy
+  - Jump
+  - Ending
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - JumpPad
   - Water
   - UI
   - Environment

@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class MemoryScript : MonoBehaviour
 {
     public Text memoriesText;
+    public Text victoryText;
 
     public int memories;
 
@@ -15,6 +16,14 @@ public class MemoryScript : MonoBehaviour
         {
             memories += 1;
             other.gameObject.SetActive(false);
+        }
+
+        if (other.gameObject.tag == "Ending")
+        {
+            if (memories == 9)
+            {
+                victoryText.gameObject.SetActive(true);
+            }
         }
     }
 
